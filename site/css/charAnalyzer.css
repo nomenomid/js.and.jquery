@@ -1,0 +1,11 @@
+body .container .input-group select.form-control {
+    width: 50%;
+}
+
+body .container .input-group {
+    width: 100%;
+}
+
+body .container .control-label ~ .control-label {
+    margin-top: 10px;
+}

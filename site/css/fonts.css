@@ -1,0 +1,4 @@
+@font-face {
+    font-family: "Font Awesome";
+    src: local("Font Awesome"), url(../fonts/fontawesome.woff) format("woff");
+}

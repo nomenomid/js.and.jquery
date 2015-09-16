@@ -1,0 +1,56 @@
+.container #startPage {
+    display: table;
+}
+
+.container #startPage .col-sm-3 {
+    float: none;
+    display: table-cell;
+    padding-bottom: 70px;
+    position: relative;
+}
+
+.container #startPage .col-sm-3 .btn {
+    position: absolute;
+    bottom: 10px;
+}
+
+.container #startPage .col-sm-3:first-of-type .btn:first-of-type {
+    left: 15px;
+}
+
+.container #startPage .col-sm-3:first-of-type .btn:nth-of-type(2) {
+    right: 15px;
+}
+
+.container #startPage .col-sm-3:nth-of-type(2) .btn:first-of-type {
+    left: 43px;
+}
+
+.container #startPage .col-sm-3:nth-of-type(2) .btn:nth-of-type(2) {
+    right: 43px;
+}
+
+.container #startPage .col-sm-3:not(:nth-of-type(-n + 2)) .btn {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container #startPage u {
+    white-space: nowrap;
+}
+
+.container .page-header h1 a {
+    color: #ccc;
+}
+
+.container .page-header h1 a:before {
+    content:"\f092";
+    font-family: "Font Awesome";
+}
+
+.container .page-header h1 a:hover,
+.container .page-header h1 a:focus,
+.container .page-header h1 a:active {
+    text-decoration: none;
+    color: #bbb;
+}

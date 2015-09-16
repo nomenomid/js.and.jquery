@@ -1,0 +1,52 @@
+<div ng-include = "'./views/navBar.html'"></div>
+<div class = "page-header">
+    <h1>jQuery Performance Tests</h1>
+</div>
+<div class = "row">
+    <div class = "col-sm-4">
+        <div class = "panel panel-default">
+            <div class = "panel-heading">Explanation</div>
+            <div class = "panel-body">
+                The performance assessment consists of 100 runs per each of the following tests:
+            </div>
+            <ol>
+                <li>unoptimized baseline code</li>
+                <li>previous plus minimized DOM querying</li>
+                <li>previous plus minimized DOM insertions</li>
+                <li>previous plus optimized jQuery</li>
+            </ol>
+        </div>
+    </div>
+    <div class = "col-sm-3">
+        <div class = "panel panel-default">
+            <div class = "panel-heading">Controls</div>
+            <div class = "panel-body">
+                <button id = "runTests" class = "btn btn-danger" ng-disabled = "runningTests" ng-click = "runTests()">Run Tests</button> 
+                <p class = "text-danger" id = "loadingIndicator" ng-show = "runningTests"><b>Running Tests...</b></p>
+                <p class = "text-warning">
+                    NOTE: tests will be performed continuously, which will make the page 
+                    <b>unresponsive</b> during the run!
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class = "col-sm-5">
+        <div class = "panel panel-default">
+            <div class = "panel-heading">Output</div>
+            <div class = "panel-body">
+                <table class = "table" id = "testResults">
+                    <thead>
+                        <tr>
+                            <th>Test</th>
+                            <th class = "text-right">Time (sec)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat = "test in testResults"><td>{{test.name}}</td><td class = "text-right">{{test.result.toFixed(3)}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
