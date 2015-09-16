@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav-bar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#/">Technical Exercises</a>
+    </div>
+    
+    <div class="collapse navbar-collapse" id="main-nav-bar">
+        <ul class="nav navbar-nav">
+            <li class="dropdown" ng-class = "{active: exerciseName == 'Char Frequency'}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Character Analyzer<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li ng-class = "{disabled: version == 'JS'}"><a href="#/charAnalyzer">Regular Version</a></li>
+                    <li ng-class = "{disabled: version == 'Angular'}"><a href="#/charAnalyzerAngular">Angular.js Version</a></li>
+                </ul>
+            </li>
+            <li class="dropdown" ng-class = "{active: exerciseName == 'Code Optimization'}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Optimization<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li ng-class = "{disabled: version == 'Explanation'}"><a href="#/codeOptimizationExplanation">Diagnosis and Explanation</a></li>
+                    <li ng-class = "{disabled: version == 'Tests'}"><a href="#/codeOptimizationTests">Performance Tests</a></li>
+                </ul>
+            </li>
+            <li ng-class = "{active: exerciseName == 'Checkbox Forms'}"><a href="#/checkboxForms">Checkbox Forms</a></li>
+            <li ng-class = "{active: exerciseName == 'Checkbox Forms'}"><a href="#/checkboxForms">Timers</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" ng-hide = "exerciseName != 'Checkbox Forms'">
+            <li><a>Inactive: <span id = "inactivityTimer">0</span> (sec)</a></li>
+        </ul>
+        <form class="navbar-form navbar-right" role="search" ng-hide = "exerciseName == 'Checkbox Forms'">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</nav>

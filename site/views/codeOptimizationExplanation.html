@@ -1,0 +1,106 @@
+<div ng-include = "'./views/navBar.html'"></div>
+<div class = "page-header">
+    <h1>jQuery Code Analysis</h1>
+</div>
+<div class = "row">
+    <div class = "col-sm-6">
+        <h4>Problem</h4>
+        <p>
+            The code below has at least TWO inefficiencies that compromise its performance.  Identify and explain 
+            the two bottlenecks and present two or more solutions that would improve the performance.
+        </p>
+        <h5 class = "text-uppercase">jQuery Code</h5>
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#069;font-weight:700">for</span> (<span style="color:#ff5600">var</span> i <span style="color:#069;font-weight:700">=</span> <span style="color:#a8017e">0</span>; i <span style="color:#069;font-weight:700">&lt;</span> <span style="color:#a8017e">100</span>; i<span style="color:#069;font-weight:700">++</span>) {
+  <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"article section:first-child div"</span>).append(<span style="color:#666">"&lt;p>"</span> <span style="color:#069;font-weight:700">+</span> i <span style="color:#069;font-weight:700">+</span> <span style="color:#666">"&lt;/p>"</span>);
+}
+</pre>
+        <h5 class = "text-uppercase">HTML Code</h5>
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#7a7a7a">&lt;<span style="color:#016cff">article</span>></span>
+  <span style="color:#7a7a7a">&lt;<span style="color:#016cff">section</span>></span>
+    <span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span>></span>
+      <span style="color:#7a7a7a">&lt;<span style="color:#016cff">div</span>>&lt;/<span style="color:#016cff">div</span>></span>
+    <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">div</span>></span>
+  <span style="color:#7a7a7a">&lt;/<span style="color:#016cff">section</span>></span>
+<span style="color:#7a7a7a">&lt;/<span style="color:#016cff">article</span>></span>
+</pre>
+        <p class = "text-muted">
+            Note: in the original code, instead of <code>article</code> element, the <code>content</code> tag was used.
+            The latter is only valid when employed inside the <code>Shadow DOM</code> as an insertion point.  The 
+            <code>content</code> element is utilized with Web Components and is not intended for marking content in 
+            regular HTML.  See <a href = "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/content">MDN reference</a>.
+        </p>
+        <h5 class = "text-uppercase">Performance</h5>
+        <p>
+            1,000 runs of the above-listed code took 14.606 seconds.  <span class = "text-muted">(Note: after each
+            run the generated paragraph nodes were removed.  The same removal method is used throughout the performance
+            test to assure result consistency).</span>
+        </p>
+        <h4>Optimization 1</h4>
+        <p>
+            In the original code jQuery performs 100 queries inside the <code>for</code> loop to find the nested 
+            <code>divs</code>.  These queries can be replaced by a single query performed before the start of the loop.
+        </p>
+        <h5 class = "text-uppercase">jQuery Code</h5>
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>divs <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"article section:first-child div"</span>);
+<span style="color:#069;font-weight:700">for</span> (<span style="color:#ff5600">var</span> i <span style="color:#069;font-weight:700">=</span> <span style="color:#a8017e">0</span>; i <span style="color:#069;font-weight:700">&lt;</span> <span style="color:#a8017e">100</span>; i<span style="color:#069;font-weight:700">++</span>) {
+  <span style="color:#069;font-weight:700">$</span>divs.append(<span style="color:#666">"&lt;p>"</span> <span style="color:#069;font-weight:700">+</span> i <span style="color:#069;font-weight:700">+</span> <span style="color:#666">"&lt;/p>"</span>);
+}
+</pre>
+        <h5 class = "text-uppercase">Performance</h5>
+        <p>
+            1,000 runs took 12.979 seconds, which is an 11% improvement compared to the previous performance.
+        </p>
+    </div>
+    <div class = "col-sm-6">
+        <h4>Optimization 2</h4>
+        <p>
+            Perhaps the most expensive DOM operation is insertion of new nodes.  Instead of inserting a paragraph at a 
+            time, each paragraph can be added to a newly created, but not yet DOM-inserted container.  After the loop
+            finishes running, the container is then added to DOM, adding all of the paragraphs at once.
+        </p>
+        <h5 class = "text-uppercase">jQuery Code</h5>
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>divs <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"article section:first-child div"</span>);
+<span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>div <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"&lt;div />"</span>).addClass(<span style="color:#666">"paragraphHolder"</span>);
+<span style="color:#069;font-weight:700">for</span> (<span style="color:#ff5600">var</span> i <span style="color:#069;font-weight:700">=</span> <span style="color:#a8017e">0</span>; i <span style="color:#069;font-weight:700">&lt;</span> <span style="color:#a8017e">100</span>; i<span style="color:#069;font-weight:700">++</span>) {
+  <span style="color:#069;font-weight:700">$</span>div.append(<span style="color:#666">"&lt;p>"</span> <span style="color:#069;font-weight:700">+</span> i <span style="color:#069;font-weight:700">+</span> <span style="color:#666">"&lt;/p>"</span>);
+}
+<span style="color:#069;font-weight:700">$</span>divs.append(<span style="color:#069;font-weight:700">$</span>div);
+</pre>
+        <h5 class = "text-uppercase">Performance</h5>
+        <p>
+            Total runtime was 8.001 seconds, which the biggest improvement of 45% compared to the original test run.
+        </p>
+        <h4>Optimization 3</h4>
+        <p>
+            Creating a paragraph using a string <code>"&lt;p&gt;" + i + "&lt;/p&gt;"</code> within the <code>append()</code> 
+            is likely to be processed more slowly compared to creating a paragraph element once, before the loop, and then 
+            cloning it.
+        </p>
+        <h5 class = "text-uppercase">jQuery Code</h5>
+<pre style="background:#fff;color:#3b3b3b"><span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>divs <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"article section:first-child div"</span>);
+<span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>div <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"&lt;div />"</span>).addClass(<span style="color:#666">"paragraphHolder"</span>);
+<span style="color:#ff5600">var</span> <span style="color:#069;font-weight:700">$</span>p <span style="color:#069;font-weight:700">=</span> <span style="color:#069;font-weight:700">$</span>(<span style="color:#666">"&lt;p />"</span>);
+<span style="color:#069;font-weight:700">for</span> (<span style="color:#ff5600">var</span> i <span style="color:#069;font-weight:700">=</span> <span style="color:#a8017e">0</span>; i <span style="color:#069;font-weight:700">&lt;</span> <span style="color:#a8017e">100</span>; i<span style="color:#069;font-weight:700">++</span>) {
+  <span style="color:#069;font-weight:700">$</span>div.append(<span style="color:#069;font-weight:700">$</span>p.clone().<span style="color:#b7734c">text</span>(i));
+}
+<span style="color:#069;font-weight:700">$</span>divs.append(<span style="color:#069;font-weight:700">$</span>div);
+</pre>
+        <h5 class = "text-uppercase">Performance</h5>
+        <p>
+            Compared to the previous performance of 8.001 seconds, current runtime improved slightly by 3% to a 
+            total time of 7.753 seconds.
+        </p>
+        <h4>Conclusion</h4>
+        <p>
+            New element creation and insertion and DOM querying are some of the most processually expensive browser
+            operations and should be optimized whenever possible.  Minizing jQuery-related processing may also add
+            a boost in performance.  In total, the three optimizations cut the runtime by about 50%.
+        </p>
+        <h4>References</h4>
+        <p>
+            A reader is welcome to examine and run <a href = "#/codeOptimizationTests" class = "text-uppercase"><b>performance tests</b></a>.  
+            <span class = "text-muted">(Note: please make sure that the developer console is open.  Performance results
+            will vary).</span>
+        </p>
+    </div>
+</div>

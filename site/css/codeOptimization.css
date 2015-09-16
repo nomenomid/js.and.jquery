@@ -1,0 +1,3 @@
+.panel p[class ^= "text"] {
+    margin-top: 12px;
+}
