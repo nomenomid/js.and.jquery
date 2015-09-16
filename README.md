@@ -1,4 +1,4 @@
-#JavaScript and jQuery Technical Exercise (<a href = "http://functionalcss.com/js.and.jquery/" target = "_blank">Demo</a>)
+#JavaScript and jQuery Technical Exercise (<a href = "https://desolate-lowlands-8089.herokuapp.com/" target = "_blank">Demo</a>)
 
 A company located near Reston, VA has asked to complete the following technical 
 test.
