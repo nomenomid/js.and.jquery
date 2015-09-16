@@ -1,5 +1,5 @@
 {
-    "name": "JavaScript vs. jQuery Technical Exercise",
+    "name": "javascript-vs-jquery-technical-exercise",
     "version": "0.0.1",
     "description": "A four-part technical test contrasting JavaScript with jQuery",
     "main": "server.js",
