@@ -26,7 +26,7 @@ Identify them, explain why they are inefficient, and show what you would do inst
 
 ```javascript
 for (var i = 0; i < 100; i++) {
-	$('content section:first-child div').append('<p>' + i + '</p>');
+	jQuery('content section:first-child div').append('<p>' + i + '</p>');
 }
 ```
 
