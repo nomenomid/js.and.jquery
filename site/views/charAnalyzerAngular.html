@@ -1,0 +1,24 @@
+<div ng-include = "'./views/navBar.html'"></div>
+<div class = "page-header">
+    <h1>Character Analyzer (Angular)</h1>
+</div>
+<div class = "row">
+    <div class = "col-sm-6">
+        <div class = "form-group">
+            <label class = "control-label">Input:</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="text-addon">...</span>
+                <input type="text" class="form-control" id = "charsToAnalyze" ng-model = "charsToAnalyze" placeholder="Type Text Here" aria-describedby="text-addon">
+            </div>
+            <label class = "control-label">Sort by:</label>
+            <div class = "input-group">
+                <select class = "form-control" id = "sortField" ng-model = "sortField" ng-options = "field.value as field.name for field in sortFields"></select>
+                <select class = "form-control" id = "sortOrder" ng-model = "sortOrder" ng-options = "order.value as order.name for order in sortOrders"></select>
+            </div>
+        </div>
+    </div>
+    <div class = "col-sm-6">
+        <label class = "control-label">Output:</label>
+        <pre id = "stringAnalysisOutput">{{charsToAnalyze | noBlanks | lowercase | charAnalyzer:sortField:sortOrder}}</pre>
+    </div>
+</div>

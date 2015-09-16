@@ -1,0 +1,50 @@
+<div class = "page-header">
+    <h1 class = "text-center">Technical Exercises <a target = "_blank" href = "https://github.com/nomenomid/technical.exercises/tree/master/js.and.jquery"></a></h1>
+    <h4 class = "text-muted text-center">(<i style = "font-family: Serif;">Built using</i> 
+        <span ng-repeat = "link in links"><a  href = "{{link.link}}" target = "{{link._blank}}">{{link.name}}</a><span ng-show = "{{!$last}}">, </span></span>)</h4>
+</div>
+<div class = "row" id = "startPage">
+    <div class = "col-sm-3">
+        <h3>Character Analyzer</h3>
+        <p>
+            Write a function <code>charAnalyzer()</code> that takes a string of characters, counts the number 
+            of occurrences of each character, and returns an object with the characters and their counts as 
+            key/value pairs.  The software should be general enough to handle the most common characters.  Also 
+            make sure that <code>charAnalyzer()</code> has a functionality sort the generated character object
+            by the character or the count in both ascending and descending order.
+        </p>
+        <a href = "#/charAnalyzer" class = "btn btn-default">Regular Version</a>
+        <a href = "#/charAnalyzerAngular" class = "btn btn-danger">Angular Version</a>
+    </div>
+    <div class = "col-sm-3">
+        <h3>Code Optimization</h3>
+        <p>
+            Take a look at the supplied jQuery code.  Identify two performance bottlenecks.  Explain in detail 
+            why the identified bottlenecks are problematic.  Propose remedies to improve runtime and outline 
+            why the proposed changes are the most optimal to implement.
+        </p>
+        <a href = "#/codeOptimizationExplanation" class = "btn btn-default">Explanations</a>
+        <a href = "#/codeOptimizationTests" class = "btn btn-warning">Test Runs</a>
+    </div>
+    <div class = "col-sm-3">
+        <h3>Checbox Forms</h3>
+        <p>
+            <u>Part 1</u>. Write a function that logs the name and true/false value of each checkbox in the supplied 
+            HTML form to the browser console. Bind this function to the form's submit event. If no checkboxes are checked, 
+            the form submission should be canceled. Do this succinctly using jQuery. <u>Part 2</u>. Redo the Part 1 
+            without using jQuery. Build the solution to run in a modern W3C-compliant browser. <u>Part 3</u>. Modify 
+            the jQuery version to be functional for all forms that may be lazy-loaded in a particular section of the page.
+        </p>
+        <a href = "#/checkboxForms" class = "btn btn-default">jQuery and JS Forms</a>
+    </div>
+    <div class = "col-sm-3">
+        <h3>Timers</h3>
+        <p>
+            <u>Part 1</u>. Write a block of code that will change a section of the HTML page header once per second to 
+            show how many seconds have passed since the user interactive with the page.  The inactivity timer should start
+            after 30 seconds of inactivity. <u>Part 2</u>. Modify the above code to restart the timer when a user clicks on 
+            the page.  Use JavaScript only (no jQuery).
+        </p>
+        <a href = "#/checkboxForms" class = "btn btn-default">Built into the Previous Answer</a>
+    </div>
+</div>
