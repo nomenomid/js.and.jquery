@@ -1,4 +1,4 @@
-#JavaScript and jQuery Technical Exercise (<a href = "https://boiling-oasis-9746.herokuapp.com" target = "_blank">Demo</a>)
+#JavaScript vs. jQuery (<a href = "https://boiling-oasis-9746.herokuapp.com" target = "_blank">Demo</a>)
 
 A company located near Reston, VA has asked to complete the following technical 
 test.
