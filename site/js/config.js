@@ -10,7 +10,10 @@ require.config({
     
     shim: {
         "angular-route": ["angular"],
-        "bootstrap": ["jquery"]
+        "bootstrap": ["jquery"],
+        angular: {
+          exports: 'angular'
+        }
     },
     
     deps: ["app"]
